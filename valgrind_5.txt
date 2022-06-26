@@ -1,0 +1,106 @@
+Iteration j = 254
+Iteration i = 8191
+Iteration j = 255
+coding1 laeuft
+matrix_coding laeuft
+DoAlign
+sumgeno
+matrix_coding laeuft
+==2420== Warning: set address range perms: large range [0xf1c02040, 0x111c02070) (undefined)
+individuals: 8192
+BytesPerIndiv: 1024
+==2420== Warning: noted but unhandled ioctl 0x19 with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==2420== Warning: noted but unhandled ioctl 0x49 with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==2420== Warning: noted but unhandled ioctl 0x21 with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==2420== Warning: noted but unhandled ioctl 0x1b with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==2420== Warning: noted but unhandled ioctl 0x44 with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+==2420== Warning: noted but unhandled ioctl 0x48 with no size/direction hints.
+==2420==    This could cause spurious value errors to appear.
+==2420==    See README_MISSING_SYSCALL_OR_IOCTL for guidance on writing a proper wrapper.
+Using device NVIDIA GeForce RTX 2070 SUPER
+IntsPerRow: 256
+BytesPerRow: 1024
+Iteration i = 0
+Iteration i = 2048
+Iteration i = 4096
+Iteration i = 6144
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+8192.000000
+==2420== Invalid read of size 4
+==2420==    at 0x558FD070: sumGeno3(unsigned int*, unsigned int, unsigned int) (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x55908D05: crossprod(unsigned int*, unsigned int, unsigned int, snpcoding, bool, bool, unsigned long, double*) (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x55909306: crossprod (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x4946F6F: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x498B84B: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496D567: Rf_eval (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496C35F: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496D2A8: Rf_applyClosure (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x4992D5C: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496D567: Rf_eval (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x497459D: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x497F0C7: ??? (in /usr/lib/R/lib/libR.so)
+==2420==  Address 0xb77c2070 is 0 bytes after a block of size 16,777,264 alloc'd
+==2420==    at 0x4845899: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2420==    by 0x49D42E5: Rf_allocVector3 (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x559075C3: CreateEmptyCodeVector(unsigned int, unsigned int, snpcoding) (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x55920495: matrix_start_Intern(unsigned int, unsigned int, SEXPREC*) (mmagpu_1bit.cu:300)
+==2420==    by 0x559204F3: matrix_start_mma1Bit(unsigned int, unsigned int, SEXPREC*) (mmagpu_1bit.cu:308)
+==2420==    by 0x559098DD: createSNPmatrix(unsigned int, unsigned int, snpcoding) (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x55909D43: matrix_coding (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420==    by 0x4946F6F: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x498B84B: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496D567: Rf_eval (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496C35F: ??? (in /usr/lib/R/lib/libR.so)
+==2420==    by 0x496D2A8: Rf_applyClosure (in /usr/lib/R/lib/libR.so)
+==2420== 
+
+ *** caught segfault ***
+address 0xb77c3000, cause 'memory not mapped'
+
+Traceback:
+ 1: miraculix::relationshipMatrix(miraculix::genomicmatrix(Z), centered = TRUE,     normalized = TRUE)
+ 2: system.time({    G <- miraculix::relationshipMatrix(miraculix::genomicmatrix(Z),         centered = TRUE, normalized = TRUE)    rm(Z)    rm(population)    gc()    y_hat2 <- ifelse(n[i] < 30000, miraculix::solveRelMat(G,         ratio, y - mean(y), mean(y)), rgpu::cu_matmul(G, rgpu::solve_large(G +         ratio * diag(rep(1, n[i])), matrix(y - mean(y), ncol = 1))) +         mean(y))})
+An irrecoverable exception occurred. R is aborting now ...
+==2420== 
+==2420== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==2420==    at 0x4DD434C: __pthread_kill_implementation (in /usr/lib/libc.so.6)
+==2420==    by 0x4D874B7: raise (in /usr/lib/libc.so.6)
+==2420==    by 0x4D8755F: ??? (in /usr/lib/libc.so.6)
+==2420==    by 0x558FD06F: sumGeno3(unsigned int*, unsigned int, unsigned int) (in /home/johannes/R/x86_64-pc-linux-gnu-library/4.1/miraculix/libs/miraculix.so)
+==2420== 
+==2420== HEAP SUMMARY:
+==2420==     in use at exit: 944,057,408 bytes in 77,125 blocks
+==2420==   total heap usage: 218,197 allocs, 141,072 frees, 2,523,062,037 bytes allocated
+==2420== 
+==2420== LEAK SUMMARY:
+==2420==    definitely lost: 0 bytes in 0 blocks
+==2420==    indirectly lost: 0 bytes in 0 blocks
+==2420==      possibly lost: 110,979 bytes in 2,039 blocks
+==2420==    still reachable: 943,938,237 bytes in 75,085 blocks
+==2420==                       of which reachable via heuristic:
+==2420==                         stdstring          : 27,262 bytes in 606 blocks
+==2420==                         newarray           : 4,264 bytes in 1 blocks
+==2420==         suppressed: 8,192 bytes in 1 blocks
+==2420== Rerun with --leak-check=full to see details of leaked memory
+==2420== 
+==2420== For lists of detected and suppressed errors, rerun with: -s
+==2420== ERROR SUMMARY: 997 errors from 1 contexts (suppressed: 0 from 0)
+zsh: segmentation fault (core dumped)  R -d valgrind -f benchmark_paper.R
