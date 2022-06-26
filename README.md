@@ -6,7 +6,7 @@ This repository contains open source code for the bachelor thesis 'GPU-Berechnun
 * gcc 11.0 or higher
 * CUDA 11.6 or higher
 * NVIDIA GPU of compute capability 8.0 or higher (Ampere architecture or newer)
-* A local copy of cutlass (https://github.com/NVIDIA/cutlass)
+* A local copy of CUTLASS (https://github.com/NVIDIA/cutlass)
 
 ## Installation
 * R CMD INSTALL RandomFieldsUtils --configure-args="USE_GPU=yes USE_AVX=yes"
@@ -35,6 +35,9 @@ https://github.com/NVIDIA/cuda-samples/blob/b312abaa07ffdc1ba6e3d44a9bc1a8e89149
 ## Less helpful
 "Did you write the GPU implementation yet?" – "Not one bit!"
 
+## Plots
+![Benchmarks SNPs](https://github.com/JohannesNaegele/miraculix-BA/blob/main/snps.pdf)
+![Benchmarks Individuals](https://github.com/JohannesNaegele/miraculix-BA/blob/main/indivs.pdf)
 
 
  
