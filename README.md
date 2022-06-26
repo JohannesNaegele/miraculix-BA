@@ -32,6 +32,9 @@ https://github.com/NVIDIA/cutlass/blob/master/test/unit/gemm/device/gemm_b1t_b1n
 Template for custom kernel
 https://github.com/NVIDIA/cuda-samples/blob/b312abaa07ffdc1ba6e3d44a9bc1a8e89149c20b/Samples/3_CUDA_Features/cudaTensorCoreGemm/cudaTensorCoreGemm.cu
 
+## Less helpful
+"Did you write the GPU implementation yet?" – "Not one bit!"
+
 
 
  
